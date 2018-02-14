@@ -4,16 +4,15 @@ let user;
 let email;
 let emailFixed;
 
-let user_data;
 let user_name;
-let user_city;
+let user_location;
 let user_about;
 
 function setTempInfo() {
     db.ref('/users/' + emailFixed).set({
         name: "someone", 
         email: "a@a.com", 
-        city: "somewhere",
+        location: "somewhere",
         username: "Hakai",
         type: "finder",
         about: "something ..."
@@ -26,7 +25,7 @@ function setTempInfo() {
 window.addEventListener('load', function() {
     getcurrentUser();
     updateProfile();
-    displayProfile();
+//    displayProfile();
 } false);
 
 function getcurrentUser() {
@@ -39,42 +38,48 @@ function updateProfile() {
     let promise = db.ref('/users/' + emailFixed).once('value').then(function(snapshot) {
         user_data = snapshot.val();
         user_name = user_data.name;
-        user_city = user_data.city;
+        user_location = user_data.location;
         user_about = user_data.about;
     
-        console.log(user_name);
-        console.log(user_city);
-        console.log(user_about); 
+        console.log("updating name to " + user_name);
+        console.log("updating location to " + user_location);
+        console.log("updating about to " + user_about); 
+        displayProfile();
     }).catch(function(e) {
         console.log(e);
     });
+//    return promise;
 }
 
 function displayProfile() {
-    console.log("displaying " + user_name);
-    console.log("displaying " + user_city);
-    console.log("displaying " + user_about);
+    console.log("displaying name: " + user_name);
+    console.log("displaying location: " + user_location);
+    console.log("displaying about: " + user_about);
 }
 
 function updateName() {
     let newName = "temp";
-    db.ref('/users/' + emailFixed + '/name').set(newName);
+    db.ref('/users/' + emailFixed).update({name: newName});
     updateProfile();
-    displayProfile();
+//    console.log("INBETWEEN");
+//    displayProfile();
 }
 
-function updateCity() {
-    let newCity = "temp";
-    db.ref('/users/' + emailFixed + '/city').set(newCity);
+function updateLocation() {
+    let newLocation = "temp";
+    db.ref('/users/' + emailFixed).update({location: newLocation});
     updateProfile();
-    displayProfile();
+//    updateProfile();
+//    console.log("INBETWEEN");
+//    displayProfile();
 }
 
 function updateAbout() {
     let newAbout = "temp";
-    db.ref('/users/' + emailFixed + '/about').set(newAbout);
+    db.ref('/users/' + emailFixed).update({about: newAbout});
     updateProfile();
-    displayProfile();
+    console.log("INBETWEEN");
+//    displayProfile();
 }
 
 
