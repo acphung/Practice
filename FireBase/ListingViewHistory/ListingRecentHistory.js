@@ -1,48 +1,3 @@
-// function addListingtoRecentHistory(idx) {
-//     // console.log(idx);
-//     // console.log(listings[idx]);
-//     // console.log(listings[idx].ref);
-//     // console.log(listings[idx].ref.key);
-//
-//     // Get Reference to User Viewing History
-//     // Using a Temporary Path
-//     const viewHistoryRef = firebaseApp.database().ref('users/anon/viewHistory');
-//
-//     // Get the Listing's Key Value in the Database
-//     let listingKey = listings[idx].ref.key;
-//     // console.log("ListingKey: " + listingKey);
-//
-//     // Tries to find the Key
-//     let keyPromise = keyExists(listingKey);
-//
-//     // If successful, do nothing
-//     // Else, push the listing key to the user's viewing history
-//     keyPromise.then((res) => {
-//         console.log(res);
-//     }).catch((rej) => {
-//         console.log(rej + " Adding Key to DB!");
-//         viewHistoryRef.push(listingKey);
-//     });
-// }
-//
-// function keyExists(listingKey) {
-//     return new Promise ((resolve, reject) => {
-//         firebaseApp.database().ref('users/anon/viewHistory').once('value', function(snapshot) {
-//             snapshot.forEach((key) => {
-//                 // console.log('Key: ' + key);
-//                 // console.log('Val: ' + key.val());
-//                 if (listingKey == key.val()) {
-//                     // console.log("Found Key! Stopping Query ...");
-//                     resolve("Found Key!");
-//                     return true;
-//                 }
-//             });
-//             console.log("End of forEach");
-//             reject("Key Doesn't Exist");
-//         });
-//     });
-// }
-
 function addListingtoRecentHistory(idx) {
     // console.log(idx);
     // console.log(listings[idx]);
@@ -69,9 +24,9 @@ function addListingtoRecentHistory(idx) {
     // If successful, do nothing
     // Else, push the listing key to the user's viewing history
     keyPromise.then((res) => {
-        console.log(res);
+        alert(res);
     }).catch((rej) => {
-        console.log(rej + " Adding Key to DB!");
+        alert(rej + " Adding Key to DB!");
         RecentHistoryRef.push(listingKey);
     });
 
