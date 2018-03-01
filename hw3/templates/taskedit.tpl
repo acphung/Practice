@@ -32,13 +32,15 @@
         <article>
             <h1>Editting Task {{taskid}}</h1>
             <section>
+                %todoselected = "selected" if oldStatus == 0 else ""
+                %doneselected = "selected" if oldStatus == 1 else ""
                 <h1>Task Edit Form</h1>
                 <form action=/edit/{{taskid}} method="POST">
                     <input name="filter" type="text" value="{{filter}}" hidden>
                     <input name="sort" type="text" value="{{sort}}" hidden>
                     <select name="status">
-                        <option>Todo</option>
-                        <option>Done</option>
+                        <option {{todoselected}}>Todo</option>
+                        <option {{doneselected}}>Done</option>
                     </select>
                     <br><br>            
                     <label for="task">Task Name: </label>

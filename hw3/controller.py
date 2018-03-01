@@ -78,7 +78,7 @@ def edit(taskid):
 
     if  request.POST.btnCancel:
         filter = request.POST.filter.strip()
-        sort = request.POST.filter.strip()
+        sort = request.POST.sort.strip()
         redirect("/list?filter=" + filter + "&sort=" + sort)
 
 
