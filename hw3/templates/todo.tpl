@@ -94,6 +94,10 @@
                 This page really isn't all that hard, it just took a lot of time to understand what is going on. Especially, when I'm not 
                 too familiar with python and sql. Some helpful resources were the ones provided in the assignment document and w3school.
             </p>
+            <p>
+                Recently Filter and Sorting Settings is persistent when not using the navbar. When using the navbar to navigate between pages 
+                the filter and sorting settings are reset.
+            </p>
         </aside>
 
         <footer>
