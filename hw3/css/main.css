@@ -1,0 +1,158 @@
+html, body {
+    color: #fff;
+    height: auto;
+    margin: 0;
+    min-width: 800px;
+    padding: 0;
+}
+
+html {
+    background-color: #333;
+}
+
+body {
+    background-color: #00e;
+}
+
+header, footer {
+    background-color: darkCyan;
+    padding: 10px 0;
+    width: 100%;
+}
+
+header {
+    padding-bottom: 0;
+}
+
+header h1 {
+    margin: inherit;
+    padding: inherit;
+    padding-left: 10px;
+}
+
+footer {
+    clear: both;
+    height: auto;
+}
+
+nav {
+    background-color: #333;
+    height: auto;
+    margin-top: 10px;
+    padding: 10px 0;
+}
+
+nav a, footer a {
+    margin: 5px 5px;
+    padding: 5px 5px;
+    text-decoration: none;
+    /* transition: background-color .5s; */
+}
+
+nav a:link, footer a:link {
+    color: #fff;
+}
+
+nav a:visited, footer a:visited {
+    color: #bbb;
+}
+
+nav a:hover, footer a:hover {
+    background-color: #fff;
+    border-radius: 5px;
+    color: #000;
+    font-weight: bold;
+}
+
+article {
+    background-color: #0a0;
+    float: left;
+    /* min-width: 36%; */
+    padding: 0 2%;
+    width: 71%;
+    height: auto;
+    min-height: 650px;
+    /* min-width: 600px; */
+}
+
+section {
+    background-color: #009000;
+    border-radius: 10px;
+    padding: 1% 2%;
+    margin: 2% 0;
+}
+
+#profile_img {
+    margin-top: 5px;
+}
+
+#courses {
+    float: left;
+}
+
+aside {
+    color: #fff;
+    float: right;
+    height: 100%;
+    min-width: 12%;
+    padding: 0 2%;
+    width: 21%;
+}
+
+aside a:link {
+    color: #fff;
+}
+
+.qtr {
+    margin: 0;
+    padding: 0;
+    float: left;
+    width: 33%;
+    min-width: 10%;
+}
+
+#todoList {
+    list-style: none;
+    padding: 0px;
+}
+
+#todoList li {
+    background-color: #007700;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#todoList li label {
+    font-size: large;
+}
+
+.posBtn {
+    background-color: aquamarine;
+    border-color: aqua;
+    border-radius: 6px;
+    color: #222;
+    padding: 5px;
+}
+
+.posBtn:hover {
+    background-color: midnightblue;
+    border-color: aqua;
+    color: white;
+    font-weight: bold;
+}
+
+.negBtn {
+    background-color: greenyellow;
+    border-color: palegreen;
+    border-radius: 6px;
+    color: #222;
+    padding: 5px;
+}
+
+.negBtn:hover {
+    background-color: red;
+    border-color: white;
+    color: white;
+    font-weight: bold;
+}

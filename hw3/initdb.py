@@ -1,0 +1,12 @@
+import sqlite3
+conn = sqlite3.connect('todo.db')
+conn.execute("DROP TABLE todo")
+conn.execute("CREATE TABLE todo (TaskId INTEGER PRIMARY KEY, TaskName TEXT, Note TEXT, PostDate DATE, DueDate DATE, UpdateDate DATE, status BOOLEAN NOT NULL)")
+conn.execute("INSERT INTO todo (TaskName, Note, PostDate, DueDate, UpdateDate, status) VALUES ('Task 1', 'placeholder1', '2021-01-01', '2022-01-01', '2025-01-01', 0)")
+conn.execute("INSERT INTO todo (TaskName, Note, PostDate, DueDate, UpdateDate, status) VALUES ('Task 2', 'placeholder2', '2022-01-01', '2023-01-01', '2026-01-01', 0)")
+conn.execute("INSERT INTO todo (TaskName, Note, PostDate, DueDate, UpdateDate, status) VALUES ('Task 3', 'placeholder3', '2023-01-01', '2024-01-01', '2027-01-01', 0)")
+conn.execute("INSERT INTO todo (TaskName, Note, PostDate, DueDate, UpdateDate, status) VALUES ('Task 4', 'placeholder4', '2024-01-01', '2025-01-01', '2028-01-01', 0)")
+conn.execute("INSERT INTO todo (TaskName, Note, PostDate, DueDate, UpdateDate, status) VALUES ('Task 5', 'placeholder5', '2025-01-01', '2026-01-01', '2029-01-01', 0)")
+conn.execute("INSERT INTO todo (TaskName, Note, PostDate, DueDate, UpdateDate, status) VALUES ('Task 6', 'placeholder6', '2026-01-01', '2027-01-01', '2030-01-01', 0)")
+conn.commit()
+conn.close()
