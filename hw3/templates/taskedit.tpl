@@ -33,6 +33,11 @@
             <h1>Editting Task {{taskid}}</h1>
             <section>
                 <h1>Task Edit Form</h1>
+                <form id="filnsort" hidden>
+                    <input name="filter" type="text" value="{{filter}}" hidden>
+                    <input name="sort" type="text" value="{{sort}}" hidden>
+                    <input id="filnsortBtn" type="submit" value="Filter and Sort" hidden>
+                </form>
                 <form action=/edit/{{taskid}} method="POST">
                     <input name="filter" type="text" value="{{filter}}" hidden>
                     <input name="sort" type="text" value="{{sort}}" hidden>

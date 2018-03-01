@@ -47,16 +47,17 @@ def list():
 @route('/new', method='GET')
 @route('/new', method='POST')
 def newTask():
+    if request.POST.filnsortBtn:
+        # return '<script>alert("FilNSortBtn")</script>'
+        filter = request.POST.filter.strip()
+        sort = request.POST.sort.strip()
+        return template('templates/newTask', currDate = datetime.today().strftime('%Y-%m-%d'), filter = filter, sort = sort)        
     if not request.POST.btnSubmit:
-        # filter = request.GET.filter
-        # if not filter:
-        #     filter = "all"
-        # sort = request.GET.sort
-        # if not sort:
-        #     sort = "none"
+        # filter
+        # sort
         return template('templates/newTask', currDate = datetime.today().strftime('%Y-%m-%d'))
-    # filter = request.POST.filter.strip()
-    # sort = request.POST.sort.strip()
+    filter = request.POST.filter.strip()
+    sort = request.POST.sort.strip()
     taskName = request.POST.task.strip()
     dueDate = request.POST.date.strip()
     postDate = datetime.today().strftime('%Y-%m-%d')

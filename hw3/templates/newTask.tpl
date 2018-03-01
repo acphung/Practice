@@ -13,15 +13,22 @@
             <nav>
                 <a href="index">Home</a>
                 <a href="list">ToDo List</a>
-                <a href="new">New Task Form</a>
+                <a href="new" id="addTask">New Task Form</a>
             </nav>
         </header>
 
         <article>
             <h1>Add Task to the To Do List Form</h1>
             <section>
+                <form id="filnsort" hidden>
+                    <input name="filter" type="text" value="{{filter}}" hidden>
+                    <input name="sort" type="text" value="{{sort}}" hidden>
+                    <input id="filnsortBtn" type="submit" value="Filter and Sort" hidden>
+                </form>
                 <h1>Task Form</h1>
                 <form action="/new" method="POST">
+                    <input name="filter" value="{{filter}}" disabled hidden>
+                    <input name="sort" value="{{sort}}" disabled hidden>
                     <label for="task">Task Name: </label>
                     <input name="task" type="text" placeholder="Enter your Task" required />
                     <br />

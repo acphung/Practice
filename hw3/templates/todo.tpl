@@ -21,7 +21,7 @@
             <nav>
                 <a href="index">Home</a>
                 <a href="list">ToDo List</a>
-                <a href="new">New Task Form</a>
+                <a id="addTask">New Task Form</a>
             </nav>
         </header>
 

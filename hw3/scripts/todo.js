@@ -22,4 +22,11 @@ document.querySelector('#todoList').addEventListener('click', (event) => {
           filterform.method = "post"
           document.querySelector('#filnsortBtn').click();
       };
-    });
+});
+
+document.querySelector('#addTask').addEventListener('click', (event) => {
+    let filterform = document.querySelector('#filnsort');
+    filterform.action = "/new";
+    filterform.method = "post";
+    document.querySelector('#filnsortBtn').click();
+})
