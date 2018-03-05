@@ -82,7 +82,7 @@ def newTask():
 
     conn = sqlite3.connect('todo.db')
     c = conn.cursor()
-    c.execute("INSERT INTO todo (TaskName, Note, PostDate, DueDate, UpdateDate, status) VALUES (?,?,?,?,?,?)", (taskName, note, dueDate, postDate, postDate, 0))
+    c.execute("INSERT INTO todo (TaskName, Note, PostDate, DueDate, UpdateDate, status) VALUES (?,?,?,?,?,?)", (taskName, note, postDate, dueDate, postDate, 0))
     conn.commit()
     conn.close()
     # redirect("/list")
@@ -107,7 +107,7 @@ def edit(taskid):
         currDate = datetime.today().strftime('%Y-%m-%d')
         conn = sqlite3.connect('todo.db')
         c = conn.cursor()
-        c.execute("SELECT TaskName, Note, PostDate, DueDate, UpdateDate, status FROM todo WHERE TaskId LIKE ?", (str(taskid)))
+        c.execute("SELECT TaskName, Note, PostDate, DueDate, UpdateDate, status FROM todo WHERE TaskId = " + str(taskid))
         cur_data = c.fetchone()
         if cur_data:
             return (template('templates/taskedit.tpl', taskid = taskid, oldTaskName = cur_data[0], oldNote = cur_data[1], 
@@ -145,7 +145,7 @@ def updateStatus(taskid):
     sort = request.POST.sort.strip()
     conn = sqlite3.connect('todo.db')
     c = conn.cursor()
-    c.execute("SELECT status FROM todo WHERE TaskId LIKE ?", (str(taskid)))
+    c.execute("SELECT status FROM todo WHERE TaskId = " + str(taskid))
     curr_status = c.fetchone()[0]
     if curr_status == 0:
         new_status = 1

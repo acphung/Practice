@@ -96,10 +96,6 @@
                 This was the most difficult part of the homework in my opinion because some I couldn't use request.POST if I have the filter and sort 
                 setting stored using input of type text.
             </p>
-            <p>
-                Recently Filter and Sorting Settings is persistent when not using the navbar. When using the navbar to navigate between pages 
-                the filter and sorting settings are reset.
-            </p>
         </aside>
 
         <footer>
