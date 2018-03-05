@@ -1,5 +1,5 @@
-document.querySelector("#cancelBtn").addEventListener('click', (event) => {
+document.querySelector("#cancelBtnVis").addEventListener('click', (event) => {
     let filterform = document.querySelector('#editTask');
     filterform.dueDate.min = '';
-    document.querySelector("#saveBtn").click();
+    document.querySelector("#cancelBtn").click();
 });

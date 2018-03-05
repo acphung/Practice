@@ -1,5 +1,4 @@
 document.querySelector('#todoList').addEventListener('click', (event) => {
-    console.log(event);
     var action, taskid;
     if (event.target.closest('LI.task')) {
         taskid = event.target.closest('LI.task').children[0].innerHTML;
