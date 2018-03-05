@@ -84,7 +84,8 @@
                     <br />
                     <textarea name="note" placeholder="Enter Notes Here" rows="10" cols="50">{{oldNote}}</textarea>
                     <br />
-                    <input id="cancelBtn" name="btnCancel" class="negBtn" type="button" value="Cancel" />
+                    <input id="cancelBtnVis" name="btnCancelVis" class="negBtn" type="button" value="Cancel" />
+                    <input id="cancelBtn" name="btnCancel" type="submit" value="Cancel" hidden />
                     <input id="saveBtn" name="btnSave" class="posBtn" type="submit" value="Save Changes" />
                 </form>
             </section>
