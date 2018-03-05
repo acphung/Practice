@@ -2,19 +2,39 @@ import sqlite3
 from bottle import route, run, debug, template, request, static_file, redirect
 from datetime import datetime
 
-@route('/')
-@route('/home')
-@route('/index')
+@route('/', method='GET')
+@route('/', method='POST')
+@route('/home', method='GET')
+@route('/home', method='POST')
+@route('/index', method='GET')
+@route('/index', method='POST')
 def index():
-    return static_file('index.html', root = '')
+    if request.POST:
+        filter = request.POST.filter.strip()
+        sort = request.POST.sort.strip()
+    else:
+        filter = 'all'
+        sort = 'none'
 
-@route('/list')
+    return template('templates/index.tpl', filter = filter, sort = sort)
+        # return template('<script>alert("{{test}}")</script>', test = request.POST)
+        # return static_file('index.html', root = '')
+
+@route('/list', method="GET")
+@route('/list', method="POST")
 def list():
     """ show all tasks with status passing filter """
     conn = sqlite3.connect('todo.db')
     c = conn.cursor()
     query = "SELECT TaskId, TaskName, Note, PostDate, DueDate, UpdateDate, status FROM todo "
-    filter = request.GET.filter
+
+    if request.POST:
+        filter = request.POST.filter.strip()
+        sort = request.POST.sort.strip()
+    else:
+        filter = request.GET.filter
+        sort = request.GET.sort
+
     if filter == "tbd":
         query += "WHERE status=0"
     elif filter == "done":
@@ -22,7 +42,6 @@ def list():
     else:
         filter = "all"
 
-    sort = request.GET.sort
     if sort == "inc-post-date":
         query += " ORDER BY PostDate"
     elif sort == "dec-post-date":
@@ -47,17 +66,15 @@ def list():
 @route('/new', method='GET')
 @route('/new', method='POST')
 def newTask():
-    if request.POST.filnsortBtn:
-        # return '<script>alert("FilNSortBtn")</script>'
+    if request.POST:
         filter = request.POST.filter.strip()
         sort = request.POST.sort.strip()
-        return template('templates/newTask', currDate = datetime.today().strftime('%Y-%m-%d'), filter = filter, sort = sort)        
+    else:
+        filter = 'all'
+        sort = 'none'
+
     if not request.POST.btnSubmit:
-        # filter
-        # sort
-        return template('templates/newTask', currDate = datetime.today().strftime('%Y-%m-%d'))
-    filter = request.POST.filter.strip()
-    sort = request.POST.sort.strip()
+        return template('templates/newTask', currDate = datetime.today().strftime('%Y-%m-%d'), filter = filter, sort = sort)
     taskName = request.POST.task.strip()
     dueDate = request.POST.date.strip()
     postDate = datetime.today().strftime('%Y-%m-%d')
@@ -68,8 +85,8 @@ def newTask():
     c.execute("INSERT INTO todo (TaskName, Note, PostDate, DueDate, UpdateDate, status) VALUES (?,?,?,?,?,?)", (taskName, note, dueDate, postDate, postDate, 0))
     conn.commit()
     conn.close()
-#    return template('<script>alert("{{ test }}")</script>', test = note)
-    redirect("/list")
+    # redirect("/list")
+    redirect("/list?filter=" + filter + "&sort=" + sort)
 
     
 @route('/edit/<taskid:int>', method='GET')
@@ -79,7 +96,7 @@ def edit(taskid):
 
     if  request.POST.btnCancel:
         filter = request.POST.filter.strip()
-        sort = request.POST.filter.strip()
+        sort = request.POST.sort.strip()
         redirect("/list?filter=" + filter + "&sort=" + sort)
 
 
@@ -122,8 +139,6 @@ def edit(taskid):
 
     redirect("/list?filter=" + filter + "&sort=" + sort)
 
-    # return template('Task "{{ taskid }}" is being edited.', taskid = taskid)
-
 @route('/status/<taskid:int>', method='POST')
 def updateStatus(taskid):
     filter = request.POST.filter.strip()
@@ -136,7 +151,6 @@ def updateStatus(taskid):
         new_status = 1
     else:
         new_status = 0
-    # return template('The Tasks OLD status is "{{curr_status}}" and NEW status is "{{new_status}}"', curr_status = curr_status, new_status = new_status)
     c.execute("UPDATE todo SET status = ? WHERE TaskId LIKE ?", (new_status, taskid))
     conn.commit()
     c.close()
