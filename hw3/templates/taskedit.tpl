@@ -23,10 +23,35 @@
         <header>
             <h1>cmps183: Homework 3</h1>
             <nav>
-                <a href="../index">Home</a>
-                <a href="../list">ToDo List</a>
-                <a href="../new">New Task Form</a>
+                <a id="navIndex">Home</a>
+                <a id="navList">ToDo List</a>
+                <a id="navNewTask">New Task Form</a>
             </nav>
+            %allchecked  = "checked" if filter=="all" else ""
+            %donechecked = "checked" if filter=="done" else ""
+            %tbdchecked  = "checked" if filter=="tbd" else ""
+            %noneselected = "selected" if sort=="none" else ""
+            %ipdselected = "selected" if sort=="inc-post-date" else ""
+            %dpdselected = "selected" if sort=="dec-post-date" else ""
+            %iddselected = "selected" if sort=="inc-due-date" else ""
+            %dddselected = "selected" if sort=="dec-due-date" else ""
+            %iudselected = "selected" if sort=="inc-update-date" else ""
+            %dudselected = "selected" if sort=="dec-update-date" else ""
+            <form id="filnsort" action="" method="POST" hidden>
+                <input type="radio" id="showAll" name="filter" value="all" {{allchecked}} />
+                <input type="radio" id="showTodo" name="filter" value="tbd" {{tbdchecked}} />
+                <input type="radio" id="showDone" name="filter" value="done" {{donechecked}} />
+                <select name="sort" size="1">
+                    <option value="none" {{noneselected}} >Default: None</option>
+                    <option value="inc-post-date" {{ipdselected}} >Sort by Increasing Post Date</option>
+                    <option value="dec-post-date" {{dpdselected}} >Sort by Decreasing Post Date</option>
+                    <option value="inc-due-date" {{iddselected}} >Sort by Increasing Due Date</option>
+                    <option value="dec-due-date" {{dddselected}} >Sort by Decreasing Due Date</option>
+                    <option value="inc-update-date" {{iudselected}} >Sort by Increasing Modified Date</option>
+                    <option value="dec-update-date" {{dudselected}} >Sort by Decreasing Modified Date</option>
+                </select>
+                <input id="filnsortBtn" type="submit" value="Filter and Sort">
+            </form>
         </header>
 
         <article>
@@ -35,7 +60,7 @@
                 %todoselected = "selected" if oldStatus == 0 else ""
                 %doneselected = "selected" if oldStatus == 1 else ""
                 <h1>Task Edit Form</h1>
-                <form action=/edit/{{taskid}} method="POST">
+                <form id="editTask" action=/edit/{{taskid}} method="POST">
                     <input name="filter" type="text" value="{{filter}}" hidden>
                     <input name="sort" type="text" value="{{sort}}" hidden>
                     <select name="status">
@@ -59,8 +84,8 @@
                     <br />
                     <textarea name="note" placeholder="Enter Notes Here" rows="10" cols="50">{{oldNote}}</textarea>
                     <br />
-                    <input name="btnCancel" class="negBtn" type="submit" value="Cancel" />
-                    <input name="btnSave" class="posBtn" type="submit" value="Save Changes" />
+                    <input id="cancelBtn" name="btnCancel" class="negBtn" type="button" value="Cancel" />
+                    <input id="saveBtn" name="btnSave" class="posBtn" type="submit" value="Save Changes" />
                 </form>
             </section>
         </article>
@@ -78,6 +103,8 @@
             <a href="#">Privacy</a>
             <a href="#">Credits</a>
         </footer>
+        <script src="/scripts/nav.js"></script>
+        <script src="/scripts/cancel.js"></script>
     </body>
 </html>
 

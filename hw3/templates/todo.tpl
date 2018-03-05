@@ -19,9 +19,9 @@
         <header>
             <h1>cmps183: Homework 3</h1>
             <nav>
-                <a href="index">Home</a>
-                <a href="list">ToDo List</a>
-                <a href="new">New Task Form</a>
+                <a id="navIndex">Home</a>
+                <a id="navList">ToDo List</a>
+                <a id="navNewTask">New Task Form</a>
             </nav>
         </header>
 
@@ -56,14 +56,9 @@
                         <option value="inc-update-date" {{iudselected}} >Sort by Increasing Modified Date</option>
                         <option value="dec-update-date" {{dudselected}} >Sort by Decreasing Modified Date</option>
                     </select>
-
                     <input id="filnsortBtn" type="submit" value="Filter and Sort">
                 </form>
 
-
-                <!-- <form action="/list" method="GET"> -->
-                    <!-- <input id="sortSubmit" type="submit" value="Sort"> -->
-                <!-- </form> -->
                 <ul id="todoList">
                     %for row in rows:
                     %statuschecked = "checked" if row[6] else ""
@@ -92,7 +87,14 @@
             <h1>Notes or Comments</h1>
             <p> 
                 This page really isn't all that hard, it just took a lot of time to understand what is going on. Especially, when I'm not 
-                too familiar with python and sql. Some helpful resources were the ones provided in the assignment document and w3school.
+                too familiar with python and sql. Some helpful resources were the ones provided in the assignment document and w3school. 
+                The example files were extremely helpful as well.
+            </p>
+            <p>
+                Recently Filter and Sorting Settings is persistent when not using the navbar. When using the navbar to navigate between pages 
+                the filter and sorting settings are reset. EDIT: I believe I got it to persist across the different routes when using the navbar.
+                This was the most difficult part of the homework in my opinion because some I couldn't use request.POST if I have the filter and sort 
+                setting stored using input of type text.
             </p>
             <p>
                 Recently Filter and Sorting Settings is persistent when not using the navbar. When using the navbar to navigate between pages 
@@ -107,7 +109,6 @@
             <a href="#">Credits</a>
         </footer>
         <script src="scripts/todo.js"></script>
-        <!-- <script src="scripts/dateHelperFcns.js"></script>
-        <script src="scripts/todo.js"></script> -->
+        <script src="scripts/nav.js"></script>
     </body>
 </html>
