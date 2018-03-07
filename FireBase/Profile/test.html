@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <div>
+            <form id="profileForm">
+                <h1>Name</h1>
+                <input id="name" name="profile" type="text" disabled>
+                <h1>Contact</h1>
+                <h2>Phone #</h2>
+                <input id="phone" name="profile" type="phone" disabled>
+                <h2>Email</h2>
+                <input id="email" name="profile" type="email" disabled>
+                <h1>Bio</h1>
+                <textarea id="bio" name="profile" style="resize: none;" rows="4" cols="75" disabled></textarea>
+                <h1>Extra</h1>
+                <input id="extra" name="profile" type="text" disabled>
+                <br /><br />
+                <input id="editBtn" type="button" value="Edit" />
+            </form>
+        </div>
+        <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+        <script>
+        // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyAAbQRFMCBBeyc3xofUVUdfYhN3OFtH6Gk",
+                authDomain: "test-project-ac9eb.firebaseapp.com",
+                databaseURL: "https://test-project-ac9eb.firebaseio.com",
+                projectId: "test-project-ac9eb",
+                storageBucket: "test-project-ac9eb.appspot.com",
+                messagingSenderId: "100798212077"
+            };
+            firebase.initializeApp(config);
+        </script>
+        <script src="profile.js"></script>
+    </body>
+</html>
